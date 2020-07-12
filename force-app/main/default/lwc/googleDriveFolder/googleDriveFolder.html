@@ -1,0 +1,96 @@
+<template>
+    <lightning-card title="Google Drive | Loreal" icon-name="standard:folder" variant="base">
+        <div slot="actions">
+            <lightning-button-group>
+                <lightning-button class="slds-theme_neutral" icon-position="left" variant="neutral" type="button" label="Button"></lightning-button>
+                <lightning-button class="slds-theme_neutral" icon-position="left" variant="neutral" type="button" label="Create"></lightning-button>
+            </lightning-button-group>
+        </div>
+        <div class="slds-card__body_inner">
+            <lightning-layout horizontal-align="spread" vertical-align="center">
+                <lightning-layout-item>
+                    <ul class="slds-list_horizontal slds-has-dividers_left">
+                        <li class="slds-item">
+                            <div style="font-size: 0.8125rem;">10 items</div>
+                        </li>
+                        <li class="slds-item">
+                            <div style="font-size: 0.8125rem;">Updated 13 minutes ago</div>
+                        </li>
+                    </ul>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-layout>
+                        <lightning-layout-item>
+                            <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:settings"></lightning-button-icon>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:table"></lightning-button-icon>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:new_window"></lightning-button-icon>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:refresh"></lightning-button-icon>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-group class="slds-m-left_xxx-small">
+                                <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:chevronleft"></lightning-button-icon>
+                                <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:chevronright"></lightning-button-icon>
+                            </lightning-button-group>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-breadcrumbs>
+                <lightning-breadcrumb label="Parent Entity" href=""></lightning-breadcrumb>
+                <lightning-breadcrumb label="Parent Record Name" href=""></lightning-breadcrumb>
+            </lightning-breadcrumbs>
+            <lightning-input class="slds-m-bottom_small" label="Search" placeholder="Search for a file or folder" type="text" variant="label-hidden"></lightning-input>
+            <ul class="slds-list_vertical-space-medium">
+                <li class="slds-item">
+                    <lightning-layout horizontal-align="spread" vertical-align="center">
+                        <lightning-layout-item>
+                            <lightning-tile class="slds-m-bottom_x-small" label="File Name">
+                                <div slot="media">
+                                    <lightning-icon icon-name="utility:open_folder" size="small"></lightning-icon>
+                                </div>
+                                <ul class="slds-list_horizontal slds-has-dividers_left slds-has-dividers_right">
+                                    <li class="slds-item">
+                                        <div class="slds-text-title slds-text-color_default">31-Jul-2017</div>
+                                    </li>
+                                </ul>
+                            </lightning-tile>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-menu variant="border" menu-alignment="right" icon-name="utility:down" icon-size="x-small">
+                                <lightning-menu-item label="Edit"></lightning-menu-item>
+                                <lightning-menu-item label="Delete"></lightning-menu-item>
+                            </lightning-button-menu>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-layout horizontal-align="spread" vertical-align="center">
+                        <lightning-layout-item>
+                            <lightning-tile class="slds-m-bottom_x-small" label="File Name">
+                                <div slot="media">
+                                    <lightning-icon icon-name="doctype:quip_sheet" size="slds-icon_medium" variant="slds-icon-inverse"></lightning-icon>
+                                </div>
+                                <ul class="slds-list_horizontal slds-has-dividers_left slds-has-dividers_right">
+                                    <li class="slds-item">
+                                        <div class="slds-text-title slds-text-color_default">31-Jul-2017</div>
+                                    </li>
+                                </ul>
+                            </lightning-tile>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button-menu variant="border" menu-alignment="right" icon-name="utility:down" icon-size="x-small">
+                                <lightning-menu-item label="Edit"></lightning-menu-item>
+                                <lightning-menu-item label="Delete"></lightning-menu-item>
+                            </lightning-button-menu>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </li>
+                <li class="slds-item"></li>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
