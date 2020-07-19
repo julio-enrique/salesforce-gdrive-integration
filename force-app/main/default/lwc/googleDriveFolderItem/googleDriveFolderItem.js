@@ -5,9 +5,7 @@ export default class GoogleDriveFolderItem extends NavigationMixin(LightningElem
     @api file;
 
     openFile(){
-        console.log('tes1');
         if(this.file.mimeType.includes("folder")){
-            console.log('tes2');
             this.dispatchEvent(new CustomEvent('folderselected', { detail: this.file.id }));
         }else{
             this[NavigationMixin.Navigate]({            
