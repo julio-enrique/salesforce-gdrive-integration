@@ -4,8 +4,12 @@
     <isExposed>false</isExposed>
     <isExposed>true</isExposed>
     <targets>
-      <target>lightning__AppPage</target>
       <target>lightning__RecordPage</target>
-      <target>lightning__HomePage</target>
     </targets> 
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage" >
+        <property name="folderFieldName" label="Folder Field name" description="Specify the object's field API Name that has the folder id" type="String" />
+    </targetConfig>
+    </targetConfigs>
+
 </LightningComponentBundle>
