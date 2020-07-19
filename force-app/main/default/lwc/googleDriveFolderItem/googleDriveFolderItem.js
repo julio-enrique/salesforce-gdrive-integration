@@ -5,15 +5,22 @@ export default class GoogleDriveFolderItem extends NavigationMixin(LightningElem
     @api file;
 
     openFile(){
-        // Navigate to the Account home page
+        console.log('tes1');
+        if(this.file.mimeType.includes("folder")){
+            console.log('tes2');
+            this.dispatchEvent(new CustomEvent('folderselected', { detail: this.file.id }));
+        }else{
+            this[NavigationMixin.Navigate]({            
+                type: 'standard__webPage',
+                attributes: {
+                    url: this.file.webViewLink
+                }
+                ,
+            });
+        }
+    }
 
-        this[NavigationMixin.Navigate]({            
-            type: 'standard__webPage',
-            attributes: {
-                url: this.file.webViewLink
-            }
-            ,
-        });
+    selectFolder(e){
 
     }
 }

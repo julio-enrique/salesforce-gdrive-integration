@@ -1,4 +1,4 @@
-public with sharing class GoogleDriveApi_FileComment {
+public with sharing class GoogleDriveApi_FileComment{
     public String id{get;set;}
     public String content{get;set;}
     public Boolean deleted{get;set;}

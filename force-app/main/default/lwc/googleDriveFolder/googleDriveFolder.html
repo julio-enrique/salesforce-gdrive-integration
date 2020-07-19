@@ -37,16 +37,18 @@
                     </lightning-layout>
                 </lightning-layout-item>
             </lightning-layout>
-            <lightning-breadcrumbs>
-                <lightning-breadcrumb label="Home" href=""></lightning-breadcrumb>
-                <lightning-breadcrumb label="Carpeta" href=""></lightning-breadcrumb>
-            </lightning-breadcrumbs>
+            <template if:true={folderLevels}>
+                <lightning-breadcrumbs>
+                    <lightning-breadcrumb label="Back" href="javascript:void(0);" onclick={goPreviousFolder} ></lightning-breadcrumb>
+                </lightning-breadcrumbs>                
+            </template>
+
             <lightning-input class="slds-m-bottom_small" label="Search" placeholder="Search for a file or folder" onkeyup={handleKeyChange} value={searchKey} type="text" variant="label-hidden"></lightning-input>
             <ul class="slds-list_vertical-space-medium">
                 <li class="slds-item">
                     <template if:true={currentPage}>
                         <template for:each={currentPage} for:item="file">
-                            <c-google-drive-folder-item key={file.id} file={file} > 
+                            <c-google-drive-folder-item key={file.id} file={file} onfolderselected={loadFolderEvent} > 
                             </c-google-drive-folder-item>
 
                         </template>    

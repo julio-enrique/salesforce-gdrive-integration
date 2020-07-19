@@ -1,5 +1,6 @@
 import { LightningElement,wire,track,api } from 'lwc';
 import init from '@salesforce/apex/GoogleDriveFolderController.init';
+import getFolderContent from '@salesforce/apex/GoogleDriveFolderController.getFolderContent';
 import doSearch from '@salesforce/apex/GoogleDriveFolderController.doSearch';
 
 const DELAY = 500;
@@ -9,10 +10,13 @@ export default class GoogleDriveFolder extends LightningElement {
     //component params
     @api recordId;
     @api folderFieldName;
+    folderId;
     
     searchKey = '';
     folderSize; 
 
+    breadCrumb = [];
+    
     //pagination
     pageSize = 5;
     @track currentPage;
@@ -29,11 +33,44 @@ export default class GoogleDriveFolder extends LightningElement {
         init({recordId: this.recordId, folderField: this.folderFieldName})
             .then(result => {
                 this.folderSize = result.files.length;
+                this.folderId = result.folderId;
+                this.breadCrumb.push(result.files);
                 this.createPagination(result.files);
 			})
 			.catch(error => {
 				this.error = error;
 			});
+    }
+
+    goPreviousFolder(){
+        this.createPagination(this.breadCrumb[this.breadCrumb.length-2]);
+        this.breadCrumb.pop();
+    }
+
+    loadFolderEvent(event){
+        const selectedFolder = event.detail;
+        this.loadFolder(selectedFolder);
+
+    }
+
+    loadFolder(selectedFolder){
+        //catch folder event
+        getFolderContent({folderId: selectedFolder})
+            .then(result => {
+                //success
+                console.log(result.files);
+                this.folderSize = result.files.length;
+                this.breadCrumb.push(result.files);
+                this.createPagination(result.files);
+                
+			})
+			.catch(error => {
+				this.error = error;
+		});
+    }
+
+    get folderLevels(){
+        return this.breadCrumb.length > 1;
     }
 
     get paginationLabel(){
@@ -43,8 +80,11 @@ export default class GoogleDriveFolder extends LightningElement {
     createPagination(files){
         this.temp = [];
         this.pages = [];
+        this.index = 0;
+        this.currentPage = [];
 
         for(var i = 0 ; i< files.length ; i++){
+            console.log(files[i].id);
             if(this.temp.length < this.pageSize){
                 this.temp.push(files[i]);
             }else{
@@ -52,6 +92,10 @@ export default class GoogleDriveFolder extends LightningElement {
                 this.temp = new Array(files[i]);
             }
         }
+        if(this.temp.length > 0){
+            this.pages.push(this.temp);
+        }
+        console.log(this.pages[0]);
         this.currentPage = this.pages[0];
         this.index = 0;
     }
