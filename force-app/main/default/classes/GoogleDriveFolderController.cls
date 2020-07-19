@@ -23,8 +23,11 @@ public with sharing class GoogleDriveFolderController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static GoogleDriveApi_SearchResult doSearch(String searchTerm){
-        GoogleDriveApi_SearchResult searchResult;// =  GoogleDriveApi.search('name+contains+\'' + searchTerm+ '\'');
+    public static GoogleDriveApi_SearchResult doSearch(String folderId, String searchTerm){
+        String encoded = EncodingUtil.urlEncode(searchTerm, 'UTF-8');
+        
+        GoogleDriveApi ga = new GoogleDriveApi();
+        GoogleDriveApi_SearchResult searchResult =  ga.search('\'' + folderId + '\'+in+parents+and+name+contains+\'' + searchTerm+ '\'');
         return searchResult;
 
     }
