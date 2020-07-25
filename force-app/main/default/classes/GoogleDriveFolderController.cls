@@ -4,6 +4,9 @@ public with sharing class GoogleDriveFolderController {
     public static GoogleDriveApi_FolderFilesResult init(Id recordId, String folderField){
 
         String sobjectType = recordId.getSobjectType().getDescribe().getName();
+        if(folderField == null){
+            folderField = GoogleDrive.getObjectMetadata(sobjectType).FieldAPI_NameWithFolderId__c;
+        }
         String queryString = 'SELECT Id, ' + folderField + ' FROM  ' + sobjectType + ' WHERE Id=:recordId';
         Sobject result = Database.query(queryString);
 
