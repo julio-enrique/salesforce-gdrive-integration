@@ -17,8 +17,4 @@ export default class GoogleDriveFolderItem extends NavigationMixin(LightningElem
             });
         }
     }
-
-    selectFolder(e){
-
-    }
 }
