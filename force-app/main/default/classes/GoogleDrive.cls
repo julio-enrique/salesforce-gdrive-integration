@@ -1,9 +1,22 @@
 public with sharing class GoogleDrive {
 
+    public static GoogleDriveObjectSettings__mdt getObjectMetadata(String objectName){
+        return [SELECT ParentFolderId__c,FolderCreationField__c,Sobject__c from GoogleDriveObjectSettings__mdt where Sobject__c =:objectName][0];
+    }
 
-    public static void createRecordFolder(Id recordId){
+    public static void createRecordFolder(Id recordId,String description){
         String sobjectType = recordId.getSobjectType().getDescribe().getName();
+        GoogleDriveObjectSettings__mdt mdt = getObjectMetadata(sobjectType);
         
+        String name;
+        String fieldName = mdt.FolderCreationField__c;
+        if(fieldName == null){
+            fieldName = 'Name';
+        }
+        name = String.valueof(Database.query('SELECT Id,' + fieldName + ' FROM ' + sobjectType + ' WHERE Id=:recordId')[0].get(fieldName));
+
+        GoogleDriveApi ga = new GoogleDriveApi();
+        ga.createFile(name, description, new List<string>{mdt.ParentFolderId__c}, GoogleDriveApi.MIME_TYPE_FOLDER);
     }
 
     public static GoogleDriveApi_FolderFilesResult getFolderFiles(String folderId){
@@ -18,5 +31,9 @@ public with sharing class GoogleDrive {
         return searchResult;
     }
 
-
+    public static GoogleDriveApi_FileCommentsResult getFileComments(String fileId){
+        GoogleDriveApi ga = new GoogleDriveApi();
+        GoogleDriveApi_FileCommentsResult result =  ga.getFileComments(fileId);
+        return result;
+    }
 }
