@@ -27,6 +27,12 @@ public with sharing class GoogleDrive {
 
     }
 
+    public static GoogleDriveApi_File getFile(String fileId){
+        GoogleDriveApi ga = new GoogleDriveApi();
+        GoogleDriveApi_File result =  ga.getFile(fileId);
+        return result;
+    }
+
     public static GoogleDriveApi_FolderFilesResult getFolderFiles(String folderId){
         GoogleDriveApi ga = new GoogleDriveApi();
         GoogleDriveApi_FolderFilesResult result =  ga.getFolderFiles(folderId);
