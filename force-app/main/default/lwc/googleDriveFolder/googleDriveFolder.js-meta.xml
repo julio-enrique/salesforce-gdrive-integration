@@ -8,7 +8,7 @@
     </targets> 
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage" >
-        <property name="folderFieldName" label="Folder Field name" description="Specify the object's field API Name that has the folder id" type="String" />
+        <property name="folderFieldName" label="Folder Field name" description="Specify the object's field API Name that has the folder id. If not specified, will take default from custom metadata configuration" type="String" />
     </targetConfig>
     </targetConfigs>
 

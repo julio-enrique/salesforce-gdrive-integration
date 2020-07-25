@@ -17,16 +17,10 @@
                 <lightning-layout-item>
                     <lightning-layout>
                         <lightning-layout-item>
-                            <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:settings"></lightning-button-icon>
-                        </lightning-layout-item>
-                        <lightning-layout-item>
                             <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:home"></lightning-button-icon>
                         </lightning-layout-item>
                         <lightning-layout-item>
                             <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:new_window"></lightning-button-icon>
-                        </lightning-layout-item>
-                        <lightning-layout-item>
-                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:refresh" onclick={loadData}></lightning-button-icon>
                         </lightning-layout-item>
                         <lightning-layout-item>
                             <lightning-button-group class="slds-m-left_xxx-small">
@@ -37,11 +31,11 @@
                     </lightning-layout>
                 </lightning-layout-item>
             </lightning-layout>
-            <template if:true={folderLevels}>
                 <lightning-breadcrumbs>
-                    <lightning-breadcrumb label="Back" href="javascript:void(0);" onclick={goPreviousFolder} ></lightning-breadcrumb>
+                    <template if:true={folderLevels}>
+                        <lightning-breadcrumb label="Back" href="javascript:void(0);" onclick={goPreviousFolder} ></lightning-breadcrumb>
+                    </template>
                 </lightning-breadcrumbs>                
-            </template>
 
             <lightning-input class="slds-m-bottom_small" label="Search" placeholder="Search for a file or folder" onkeyup={handleKeyChange} value={searchKey} type="text" variant="label-hidden"></lightning-input>
             <ul class="slds-list_vertical-space-medium">

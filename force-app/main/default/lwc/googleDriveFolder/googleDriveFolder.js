@@ -3,7 +3,7 @@ import init from '@salesforce/apex/GoogleDriveFolderController.init';
 import getFolderContent from '@salesforce/apex/GoogleDriveFolderController.getFolderContent';
 import doSearch from '@salesforce/apex/GoogleDriveFolderController.doSearch';
 
-const DELAY = 500;
+const DELAY = 300;
 
 export default class GoogleDriveFolder extends LightningElement {
 
@@ -109,13 +109,19 @@ export default class GoogleDriveFolder extends LightningElement {
         if(this.temp.length > 0){
             this.pages.push(this.temp);
         }
-        console.log(this.pages[0]);
+        console.log("pages length " + this.pages.length);
+        console.log("last item length " + this.pages[this.pages.length-1].length);
+        console.log("last page first item " + this.pages[this.pages.length-1][0]);
         this.currentPage = this.pages[0];
         this.index = 0;
     }
 
     getNextPage(){
-        if(this.index < this.pages.length){
+        console.log("index " + this.index);
+        console.log("pages length " + this.pages.length);
+        console.log("last item length " + this.pages[this.pages.length-1].length);
+        console.log("last page first item " + this.pages[this.pages.length-1][0]);        
+        if(this.index < (this.pages.length-1)){
             this.index++;
             this.currentPage = this.pages[this.index];
         }
@@ -123,6 +129,9 @@ export default class GoogleDriveFolder extends LightningElement {
     }
 
     getPreviousPage(){
+        console.log("pages length " + this.pages.length);
+        console.log("last item length " + this.pages[this.pages.length-1].length);
+        console.log("last page first item " + this.pages[this.pages.length-1][0]);        
         if(this.index > 0){
             this.index--;
             this.currentPage = this.pages[this.index];
