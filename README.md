@@ -8,5 +8,3 @@ The objective of this project aims to build an Apex Wrapper of the Google Drive 
 ### Installing
 
 ### Using this project
-
-
