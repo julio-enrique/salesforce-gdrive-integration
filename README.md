@@ -16,4 +16,4 @@ A Google account and Salesforce Org in any version.
 5. Ready to go!
 
 ### Using this project
-Use this project if you need to:
+Use this project as a starting point when working with the drive API. The GoogleDriveApi apex class contains all the 
