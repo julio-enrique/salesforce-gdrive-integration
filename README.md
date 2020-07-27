@@ -19,3 +19,9 @@ A Google account and Salesforce Org in any version.
 
 ### Using this project
 Use this project as a starting point when working with the drive API. 
+![Solution components](https://github.com/julio-enrique/salesforce-gdrive-integration/blob/master/Solution%20components.png)
+
+#### Name credentials and data source 
+Declarative components to create the connection
+#### Google Drive API
+Is the API Wrapper. 
