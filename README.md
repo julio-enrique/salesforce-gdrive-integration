@@ -24,9 +24,10 @@ Use this project as a starting point when working with the drive API.
 #### Name credentials and data source 
 Declarative components to create the connection
 #### Google Drive API
-Is the API Wrapper. The goal of this layer is to translate all the API callouts in apex methods. 
+Is the API Wrapper. The goal of this layer is to translate all the API callouts in apex methods. Initially this class resolves the common methods such as ask for a file/folder details, perform a search, get file comments...
 #### Google Drive
 Is a service layer that uses the wrapper to resolve common cases. 
 #### Components layer
 Represents Lightning Web components, Flows, Invocable methods and reusable components to use in your application.
 
+### More about this project
