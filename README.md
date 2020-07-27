@@ -13,7 +13,7 @@ A Google account and Salesforce Org in any version.
 1. Create an app in the google cloud console that allows you to connect from a third party app (in this case Salesforce).
 2. In Salesforce, create an Auth. Provider and Named credentials with the information generated from the Google Cloud app.
 3. Add https://googleapis.com to remote site settings
-- This excelent post by SalesforceProfs explains very well and in detail all these steps.  - 
+- This excelent post by [SalesforceProfs](https://salesforceprofs.com/salesforce-to-google-rest-api-integration/) explains very well and in detail all these steps.  - 
 4. Install this source code in your org.
 5. Ready to go!
 
@@ -25,3 +25,7 @@ Use this project as a starting point when working with the drive API.
 Declarative components to create the connection
 #### Google Drive API
 Is the API Wrapper. 
+#### Google Drive
+#### Components layer
+
+
