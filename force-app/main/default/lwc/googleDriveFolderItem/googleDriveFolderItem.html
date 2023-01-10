@@ -1,23 +1,13 @@
 <template>
-    <lightning-layout key={file.id} horizontal-align="spread" vertical-align="center" >
-        <lightning-layout-item>
-            <lightning-tile class="slds-m-bottom_x-small" label={file.name} href="javascript:void(0);" onclick={openFile} link={file.webViewLink} type="media" >
-                <img slot="media" src={file.iconLink} alt="Italian Trulli">                                        
-                <ul class="slds-list_horizontal slds-has-dividers_left slds-has-dividers_right">
-                    <li class="slds-item">
-                        <div class="slds-text-title slds-text-color_default">
-                            Last modified: <lightning-formatted-date-time value={file.modifiedTime} year="numeric" month="numeric" day="numeric" hour="2-digit"
-                                minute="2-digit" hour12="false"></lightning-formatted-date-time>
-                         </div>
-                    </li>
-                </ul>
-            </lightning-tile>
-        </lightning-layout-item>
-        <!--<lightning-layout-item>
-            <lightning-button-menu variant="border" menu-alignment="right" icon-name="utility:down" icon-size="x-small">
-                <lightning-menu-item label="Edit"></lightning-menu-item>
-                <lightning-menu-item label="Delete"></lightning-menu-item>
-            </lightning-button-menu>
-        </lightning-layout-item>-->
-    </lightning-layout>
+    <lightning-tile class="slds-p-bottom_x-small" label={file.name} href="javascript:void(0);" onclick={openFile} link={file.webViewLink} type="media" >
+        <img slot="media" src={file.iconLink} alt="Italian Trulli">                                        
+        <ul class="slds-list_horizontal slds-has-dividers_left slds-has-dividers_right">
+            <li class="slds-item">
+                <div class="slds-text-title slds-text-color_default">
+                    Last modified: <lightning-formatted-date-time value={file.modifiedTime} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                        minute="2-digit" hour12="false"></lightning-formatted-date-time>
+                </div>
+            </li>
+        </ul>
+    </lightning-tile>
 </template>

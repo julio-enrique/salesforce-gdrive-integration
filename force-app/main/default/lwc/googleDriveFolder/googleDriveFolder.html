@@ -1,55 +1,73 @@
 <template>
-    <lightning-card icon-name="standard:folder" title="Google Drive Folder"  variant="base">
-        <div slot="actions">
-        </div>
-        <div class="slds-card__body_inner">
-            <lightning-layout horizontal-align="spread" vertical-align="center">
-                <lightning-layout-item>
-                    <ul class="slds-list_horizontal slds-has-dividers_left">
-                        <li class="slds-item">
-                            <div style="font-size: 0.8125rem;">{folderSize} files</div>
-                        </li>
-                        <li class="slds-item">
-                            <div style="font-size: 0.8125rem;">{paginationLabel}</div>
-                        </li>
-                    </ul>
-                </lightning-layout-item>
-                <lightning-layout-item>
-                    <lightning-layout>
-                        <lightning-layout-item>
-                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:home"></lightning-button-icon>
-                        </lightning-layout-item>
-                        <lightning-layout-item>
-                            <lightning-button-icon class="slds-m-left_xxx-small" alternative-text="" icon-class="" variant="border-filled" icon-name="utility:new_window"></lightning-button-icon>
-                        </lightning-layout-item>
-                        <lightning-layout-item>
-                            <lightning-button-group class="slds-m-left_xxx-small">
-                                <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:chevronleft" onclick={getPreviousPage} ></lightning-button-icon>
-                                <lightning-button-icon alternative-text="" icon-class="" variant="border-filled" icon-name="utility:chevronright" onclick={getNextPage} ></lightning-button-icon>
-                            </lightning-button-group>
-                        </lightning-layout-item>
-                    </lightning-layout>
-                </lightning-layout-item>
-            </lightning-layout>
-                <lightning-breadcrumbs>
-                    <template if:true={folderLevels}>
-                        <lightning-breadcrumb label="Back" href="javascript:void(0);" onclick={goPreviousFolder} ></lightning-breadcrumb>
-                    </template>
-                </lightning-breadcrumbs>                
+    <div class="slds-box slds-card slds-p-around_none" style="background-color:white">
 
-            <lightning-input class="slds-m-bottom_small" label="Search" placeholder="Search for a file or folder" onkeyup={handleKeyChange} value={searchKey} type="text" variant="label-hidden"></lightning-input>
-            <ul class="slds-list_vertical-space-medium">
+        <!-- HEADER -->
+        <div class="slds-card__header slds-grid slds-page-header" >
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="standard:folder" size="small" alternative-text="Event"
+                        title="Event"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title" aria-level="2">
+                        <span class="slds-text-heading_small slds-truncate">Google Drive Folder</span>
+                    </h2>
+                </div>
+                <div class="slds-no-flex">
+                    <slot name="actions">
+                        <lightning-button-group>
+                            <lightning-button-icon alternative-text="" icon-class="" variant="border-filled"
+                                icon-name="utility:new_window"></lightning-button-icon>
+                            <lightning-button-icon alternative-text="" icon-class="" variant="border-filled"
+                                icon-name="utility:chevronleft" onclick={getPreviousPage}></lightning-button-icon>
+                            <lightning-button-icon alternative-text="" icon-class="" variant="border-filled"
+                                icon-name="utility:chevronright" onclick={getNextPage}></lightning-button-icon>
+                        </lightning-button-group>
+                    </slot>
+                </div>
+            </header>
+        </div>
+
+        <!-- BODY -->
+        <div class="slds-media__body">
+            <template if:true={folderLevels}>
+                <ul class="slds-list_horizontal slds-has-dividers_left">
+                    <li class="slds-item slds-p-left_small">
+                        <lightning-breadcrumbs>
+                            <lightning-breadcrumb label="Back" href="javascript:void(0);"
+                                onclick={goPreviousFolder}></lightning-breadcrumb>
+                        </lightning-breadcrumbs>
+                    </li>
+                </ul>
+            </template>
+
+
+            <ul class="slds-list_vertical-space-medium slds-p-left_small slds-p-top_x-small">
+
                 <li class="slds-item">
                     <template if:true={currentPage}>
                         <template for:each={currentPage} for:item="file">
-                            <c-google-drive-folder-item key={file.id} file={file} onfolderselected={loadFolderEvent} > 
+                            <c-google-drive-folder-item key={file.id} file={file} onfolderselected={loadFolderEvent}>
                             </c-google-drive-folder-item>
 
-                        </template>    
+                        </template>
                     </template>
                 </li>
-                <li class="slds-item"></li>
             </ul>
         </div>
-    </lightning-card>
+
+        <!-- FOOTER -->
+        <div class="slds-card__footer">
+            <div class="slds-col">
+                <span>{paginationLabel}</span>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
 </template>

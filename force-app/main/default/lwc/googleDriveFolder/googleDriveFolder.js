@@ -42,20 +42,6 @@ export default class GoogleDriveFolder extends LightningElement {
 			});
     }
 
-    handleKeyChange(event) {
-        window.clearTimeout(this.delayTimeout);
-        const searchKey = event.target.value;
-        this.delayTimeout = setTimeout(() => {
-            this.searchKey = searchKey;
-            doSearch({folderId: this.folderId,searchTerm:searchKey})
-                .then(result => {
-                    this.folderSize = result.files.length;
-                    this.createPagination(result.files);                    
-                })
-    
-        }, DELAY);
-    }
-
     goPreviousFolder(){
         this.createPagination(this.breadCrumb[this.breadCrumb.length-2]);
         this.breadCrumb.pop();
