@@ -1,7 +1,7 @@
 # Salesforce with Google Drive integration
 The objective of this project aims to build an Apex Wrapper of the Google Drive REST API with a library of apex services and components.
 
-![Google Drive Folder](https://github.com/julio-enrique/salesforce-gdrive-integration/blob/master/screenshot.png)
+![Google Drive Folder](https://github.com/julio-enrique/salesforce-gdrive-integration/blob/master/images/screen-example.png)
 
 ## Getting started
 
